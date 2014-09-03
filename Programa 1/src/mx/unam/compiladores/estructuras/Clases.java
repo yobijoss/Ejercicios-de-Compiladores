@@ -9,10 +9,10 @@ public class Clases  {
 
     public Clases ( ){
         listaClases = new ListaDE<Token>();
-        listaClases.InsertarAlFinal(new Token("PR","if"));
-        listaClases.InsertarAlFinal(new Token("PR","else"));
-        listaClases.InsertarAlFinal(new Token("PR","if"));
-        listaClases.InsertarAlFinal(new );
+        listaClases.InsertarAlFinal(new Token("0","if"));
+        listaClases.InsertarAlFinal(new Token("0","else"));
+        listaClases.InsertarAlFinal(new Token("1","ID"));
+        listaClases.InsertarAlFinal(new Token ("2",""));
 
     }
 
