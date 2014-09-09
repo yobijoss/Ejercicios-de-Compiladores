@@ -2,9 +2,13 @@ package mx.unam.compiladores;
 
 import mx.unam.compiladores.estructuras.Token;
 
+/**
+ * Created by José Ángel García Salinas and Antonio Lozano Arriaga on 01/09/14.
+ *
+ * Clase que obtiene tokens y las clases de los token obtenidos al leer un archivo.
+ */
 
-
-public class AnalizadorFeliz  {
+public class AnalizadorSuperFeliz {
 
     private int estado_actual = 0;
     private int cont = 0;
@@ -12,14 +16,21 @@ public class AnalizadorFeliz  {
     private char[] caracteres;
     private Character c;
 
-    public AnalizadorFeliz(){
+    /**
+     * Constructor que inicializa un automata y obtiene un arreglo de caracteres
+     * resultado de leet un archivo
+     */
+    public AnalizadorSuperFeliz(){
         automata = new Automata();
         caracteres = new LeerCaracteres().readFile();
         c=getC();
     }
 
 
-
+    /**
+     * Devuelve el siguiente token
+     * @return token
+     */
     public Token getSigToken(){
         Token token ;
         String buffer="";
@@ -57,14 +68,14 @@ public class AnalizadorFeliz  {
         token = new Token(String.valueOf(tipo),buffer);
         token.imprime();
         TablaSimbolos.listaSimbolos.insertarAlFinal(token);
-
-
-
-
         return token;
     }
 
-
+    /**
+     * Devuelve la clase que pertenece el token dependiendo del estado de aceptacion
+     * @param estado
+     * @return número de clase
+     */
     public static int getClaseToken(int i){
         switch (i){
             case 13:
@@ -100,6 +111,10 @@ public class AnalizadorFeliz  {
         return -1;
     }
 
+    /**
+     * Devuelve el siguiente caracter del arreglo o '$' si ya leyó todo el archivo
+     * @return caracter
+     */
     public Character getC(){
         return ( (cont<caracteres.length) ? caracteres[cont++]:'$');
     }

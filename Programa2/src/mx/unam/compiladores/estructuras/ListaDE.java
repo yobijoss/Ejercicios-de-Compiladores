@@ -1,17 +1,25 @@
 package mx.unam.compiladores.estructuras;
-
-import java.io.Serializable;
-import java.util.Collection;
-
+/**
+ * * Created by José Ángel García Salinas and Antonio Lozano Arriaga on 01/09/14.
+ * Clase que define una lista doblemente enlazada por que YOLO
+ * @param <Te> Tipo de dato del objeto que almacenará la lista
+ */
 public class ListaDE<Te>  {
 
 	private NodoDE<Te> H;
 	private NodoDE<Te> T;
 
+    /**
+     * Constructor donde definimos como nulos nuestros nodos inicial y final
+     */
 	public ListaDE(){
 		H=T=null;
 	}
 
+    /**
+     * Método que inserta un valor al inicio de la lista
+     * @param nombre
+     */
 	public void insertarAlInicio(Te nombre){
 		NodoDE<Te> q = new NodoDE<Te>(null,nombre,H);
 		if(!vacio())
@@ -21,6 +29,10 @@ public class ListaDE<Te>  {
 		H=q;
 	}
 
+    /**
+     * Método que inserta un valor al final de la lista;
+     * @param nombre
+     */
 	public void insertarAlFinal(Te nombre){
 		NodoDE<Te> q = new NodoDE<Te>(T,nombre,null);
 		if(!vacio())
@@ -30,6 +42,11 @@ public class ListaDE<Te>  {
 		T=q;
 	}
 
+    /**
+     * Método que busca un Nodo y devuelve su referencia
+     * @param nombre
+     * @return Nodo donde su dato es nombre
+     */
 	public NodoDE<Te> buscar(Te nombre){
 		NodoDE<Te> q;
 		q=H;
@@ -43,6 +60,11 @@ public class ListaDE<Te>  {
 		return null;
 	}
 
+    /**
+     * Inserta nodo entre un dos nodos después del nodo con nombre anterior
+     * @param nombrenuevo
+     * @param anterior
+     */
 	public void insertarNodo(Te nombrenuevo, NodoDE<Te> anterior){
 		NodoDE<Te> nuevo = new NodoDE<Te>(anterior,nombrenuevo,anterior.getSig());
 		if(anterior.getSig()==null)
@@ -52,6 +74,11 @@ public class ListaDE<Te>  {
 		anterior.setSig(nuevo);
 	}
 
+    /**
+     * Método que inserta un nodo después de algun nodo con cierto nombre
+     * @param nombre
+     * @param nombrenuevo
+     */
 	public void InsertaDespues(Te nombre, Te nombrenuevo){
 		NodoDE<Te> q = buscar(nombre);
 		if(q!=null)
@@ -60,6 +87,11 @@ public class ListaDE<Te>  {
 			System.out.println("[!]No existe el nombre : "+nombre);
 	}
 
+    /**
+     * Método que inserta un nodo antes de algun nodo con cierto nombre
+     * @param nombre
+     * @param nombrenuevo
+     */
 	public void InsertaAntes(Te nombre, Te nombrenuevo){
 		NodoDE<Te> q = buscar(nombre);
 		if(q==null)
@@ -70,6 +102,9 @@ public class ListaDE<Te>  {
 			insertarNodo(nombrenuevo,q.getAnt());
 	}
 
+    /**
+     * Lista losdatos dentro de los nodos en la lista
+     */
 	public void listar(){
 		NodoDE<Te> q = H;
 		if(q==null){
@@ -81,6 +116,11 @@ public class ListaDE<Te>  {
 		}
 	}
 
+    /**
+     * Actualiza el dato de algún nodo dentro de la lista
+     * @param nombre
+     * @param nombrenuevo
+     */
 	public void actualizar(Te nombre,Te nombrenuevo){
 		NodoDE<Te> q = buscar(nombre);
 		if(q != null)
@@ -89,10 +129,19 @@ public class ListaDE<Te>  {
 			System.out.println("[!] No existe el dato");
 	}
 
+    /**
+     * Indíca si la lista esta vacio
+     * @return estaLleno
+     */
 	public boolean vacio(){
 		return (T==null);
 	}
 
+    /**
+     * borra un nodo de la lista
+     * @param q
+     * @return dato que tenía el nodo
+     */
 	public Te borrar(NodoDE<Te> q){
 		Te aux;
 		NodoDE<Te> q1;
@@ -114,6 +163,10 @@ public class ListaDE<Te>  {
 		return aux;
 	}
 
+    /**
+     * devuelve el tamaño de la lista
+     * @return tamaño lista
+     */
     public int size(){
         int i = 0;
         NodoDE<Te> q = H;
@@ -128,6 +181,10 @@ public class ListaDE<Te>  {
         return i;
     }
 
+    /**
+     * devuelve una cadena con todos los datos dentro de los nodos
+     * @return cadena
+     */
     @Override
     public String toString() {
         String cadena ="";

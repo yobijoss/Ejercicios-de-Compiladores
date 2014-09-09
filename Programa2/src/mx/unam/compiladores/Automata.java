@@ -1,7 +1,9 @@
 package mx.unam.compiladores;
 
 /**
- * Created by jagspage2013 on 02/09/14.
+ * Created by José Ángel García Salinas and Antonio Lozano Arriaga on 01/09/14.
+ * Clase que genera un automata con el cual podemos obtener el estado siguiente
+ *
  */
 public class Automata  {
 
@@ -40,6 +42,13 @@ public class Automata  {
     };
 
 
+    /**
+     * Método que devuelve el estado siguiente al ingresar un estado actual
+     * y un caracter
+     * @param ctr
+     * @param estado
+     * @return estado siguiente
+     */
     public int getEdoSiguiente(char ctr, int estado){
         int edo_siguiente = -1;
 
@@ -74,6 +83,12 @@ public class Automata  {
         return edo_siguiente;
     }
 
+    /**
+     * Devuelve true or false dependiendo si el caracter ent está en el arreglo
+     * @param ent
+     * @param arreglo
+     * @return estaEnArreglo
+     */
     private boolean compararArreglo(char ent,char[] arreglo){
         for(char item :arreglo ){
             if(item == ent) {
@@ -84,10 +99,21 @@ public class Automata  {
         return false;
     }
 
+    /**
+     * Devuelve true or false dependiendo si los caracteres son iguales.
+     * @param ent
+     * @param comparar
+     * @return esIgual
+     */
     private boolean compararCaracter(char ent,char comparar){
         return ent == comparar;
     }
 
+    /**
+     * Devuelve true or false dependiendo si un estado es de aceptación
+     * @param edoSig
+     * @return esDeAceptación
+     */
     public boolean esAceptacion(int edoSig) {
         int arreglo[] = {1,2,3,5,6,7,8,9,10,11,12,13};
         for(int item : arreglo ){
