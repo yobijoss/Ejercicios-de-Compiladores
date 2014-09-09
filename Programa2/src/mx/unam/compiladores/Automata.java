@@ -5,59 +5,96 @@ package mx.unam.compiladores;
  */
 public class Automata  {
 
+    private char ESPACIO[] = {' ','\n','\t','\r'};
+    private char DIGITOS[]={'0','1','2','3','4','5','6','7','8','9'};
+    private char PUNTO = '.';
+    private char IGUAL= '=';
+    private char ELSE[] = {'e','l','s'};
+    private char IF[] = {'i','f'};
+    private char P_ABRE= '(';
+    private char OPERADORES[]={'+','-','*','/'};
+    private char CARACTER_ESPECIAL[]={')',',',';'};
+    private char LETRAS[]= {
+            'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+    };
+
     public static int[][] tabla_estados={
 
-            {1,8,1,1,7,1,5,4,2,6,3,3,-1},
-            {1,1,1,1,1,1,-1,-1,1,-1,-1,-1,-1},
-            {-1,-1,-1,-1,-1,-1,-1,4,2,-1,-1,-1,-1},
-            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+            {1,8,1,1,7,1,5,4,2,6,3,3,14},
+            {1,1,1,1,1,1,14,-1,1,14,14,14,14},
+            {-1,-1,-1,-1,-1,-1,14,4,2,14,14,14,14},
+            {14,14,14,14,14,14,14,14,14,14,14,14,14},
             {-1,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1},
-            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-            {1,1,1,1,1,1-1,-1,-1,1,-1,-1,-1,-1},
-            {1,1,11,1,1,1,-1,-1,1,-1,-1,-1,-1},
-            {-1,-1,-1,-1,-1,-1,-1,-1,9,-1,-1,-1,-1},
-            {1,1,1,1,1,1,-1,-1,1,-1,-1,-1,-1},
-            {1,1,1,12,1,1,-1,-1,1,-1,-1,-1,-1},
-            {1,13,1,1,1,1,-1,-1,1,-1,-1,-1,-1},
-            {1,1,1,1,1,1,-1,-1,1,-1,-1,-1,-1},
-
+            {14,14,14,14,14,14,-1,14,14,-1,14,-1,14},
+            {14,14,14,14,14,14,-1,14,14,-1,14,-1,14},
+            {1,1,1,1,1,10,14,-1,1,14,14,14,14},
+            {1,1,11,1,1,1,14,-1,1,14,14,14,14},
+            {-1,-1,-1,-1,-1,-1,14,-1,9,14,14,14,14},
+            {1,1,1,1,1,1,14,-1,1,14,14,14,14},
+            {1,1,1,12,1,1,14,-1,1,14,14,14,14},
+            {1,13,1,1,1,1,14,-1,1,14,14,14,14},
+            {1,1,1,1,1,1,14,-1,1,-1,14,14,14},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0}
 
     };
 
 
-    public static int getClaseToken(int i){
-        switch (i){
-            case 13:
-                return 0;
-            case 1:
-                return 1;
-            case 2:
-                return 5;
-            case 3:
-                return 2;
-            case 5:
-                return 4;
-            case 6:
-                return 3;
-            case 7:
-                return 1;
-            case 8:
-                return 1;
-            case 9:
-                return 6;
-            case 10:
-                return 0;
-            case 11:
-                return 1;
-            case 12:
-                return 1;
-        }
+    public int getEdoSiguiente(char ctr, int estado){
+        int edo_siguiente = -1;
 
-        return -1;
+        if(compararCaracter(ctr,this.ELSE[0]) && edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][1];
+        if(compararCaracter(ctr,this.ELSE[1])&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][2];
+        if(compararCaracter(ctr,this.ELSE[2])&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][3];
+
+        if(compararCaracter(ctr,this.IF[0])&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][4];
+        if(compararCaracter(ctr,this.IF[1])&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][5];
+
+        if(compararArreglo(ctr,this.LETRAS)&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][0];
+        if(compararArreglo(ctr,this.DIGITOS)&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][8];
+        if(compararArreglo(ctr,this.OPERADORES)&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][6];
+        if(compararArreglo(ctr,this.CARACTER_ESPECIAL)&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][11];
+        if(compararCaracter(ctr,this.IGUAL)&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][9];
+        if(compararCaracter(ctr,this.P_ABRE)&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][10];
+        if(compararCaracter(ctr,this.PUNTO)&& edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][7];
+        if(compararArreglo(ctr, this.ESPACIO) && edo_siguiente ==-1)
+            edo_siguiente = Automata.tabla_estados[estado][12];
+        return edo_siguiente;
     }
-    public static boolean isEdo13(int i){
-        return i == 13;
 
+    private boolean compararArreglo(char ent,char[] arreglo){
+        for(char item :arreglo ){
+            if(item == ent) {
+                System.out.print("El caracter es "+ent);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean compararCaracter(char ent,char comparar){
+        return ent == comparar;
+    }
+
+    public boolean esAceptacion(int edoSig) {
+        int arreglo[] = {1,2,3,5,6,7,8,9,10,11,12,13};
+        for(int item : arreglo ){
+            if(item == edoSig) {
+                return true;
+            }
+        }
+        return false;
     }
 }

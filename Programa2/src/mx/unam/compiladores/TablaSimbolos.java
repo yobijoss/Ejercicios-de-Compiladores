@@ -17,7 +17,7 @@ public class TablaSimbolos {
 
 
     public void imprime(){
-        listaSimbolos.listar();
+        System.out.print("\n\n Tabla de Simbolos \n\n");listaSimbolos.listar();
     }
 
 }

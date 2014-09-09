@@ -32,11 +32,11 @@ public class Token {
     }
 
     public void imprime(){
-        System.out.print("< "+this.getClase()+" | "+getValor()+" >");
+        System.out.print("\n< "+this.getClase()+" | "+getValor()+" >");
     }
 
     @Override
     public String toString() {
-        return "< "+this.getClase()+" | "+getValor()+" >";
+        return "\n< "+this.getClase()+" | "+getValor()+" >";
     }
 }
