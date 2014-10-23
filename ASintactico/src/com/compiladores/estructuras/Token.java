@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.compiladores;
+package com.compiladores.estructuras;
 
 /**
  * 
@@ -13,11 +13,11 @@ package com.compiladores;
 
 
 public class Token {
-    String lex;
-    int clase;
-    char atomo;
-    int line;
-    int column;
+    public String lex;
+    public int clase;
+    public char atomo;
+    public int line;
+    public int column;
     
 
 
@@ -40,6 +40,10 @@ public class Token {
     public String toString(){
         return "<"+this.lex+" | "+this.clase+">";
     }
+    public void imprimir(){
+        System.out.println( "<"+this.lex+" | "+this.clase+">");
+    }
+    public String getValor(){return this.lex;}
 
     public void imp(){
         System.out.println("Token ...........");

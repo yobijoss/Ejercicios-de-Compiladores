@@ -6,6 +6,8 @@
 
 package com.compiladores;
 
+import com.compiladores.estructuras.Token;
+
 import java.io.IOException;
 
 /**
@@ -19,10 +21,12 @@ import java.io.IOException;
 public class Parser {
     
     Yylex lex;
+    TablaSimbolos tabla;
     
     
     Parser(Yylex yylex){
         this.lex = yylex;
+        tabla = new TablaSimbolos();
     }
     
     public final char ID='i',PR = 'p',NAT='n', REAL ='r', 
@@ -40,6 +44,7 @@ public class Parser {
     }
     void avanzar() throws IOException{
         tok = lex.yylex();
+        tabla.add(tok);
         tok.imp();
     }
     
@@ -58,6 +63,7 @@ public class Parser {
         avanzar();
         program();
         consumir('e');
+        tabla.listar();
     }
     
 
