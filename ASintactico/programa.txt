@@ -1,0 +1,7 @@
+int al := 56;
+float id := 34.3f;
+double sl := .45 , al := 4.5;
+char sc := c;
+char xm;
+id+56*(sc);
+al/s;

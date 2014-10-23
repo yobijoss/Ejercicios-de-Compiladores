@@ -1,0 +1,4 @@
+Rem sumar a mil yolo
+Push Add  4
+Pop  3
+Add  Add

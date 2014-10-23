@@ -1,0 +1,3 @@
+Numero de caracteres: 54
+Numero de palabras: 11
+Numero de lineas: 2
