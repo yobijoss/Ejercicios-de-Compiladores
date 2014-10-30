@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ASintactico:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ASintactico_jar</output-path>
+    <root id="archive" name="ASintactico.jar">
+      <element id="module-output" name="ASintactico" />
+      <element id="dir-copy" path="$PROJECT_DIR$" />
+      <element id="file-copy" path="$PROJECT_DIR$/programa.txt" />
+    </root>
+  </artifact>
+</component>

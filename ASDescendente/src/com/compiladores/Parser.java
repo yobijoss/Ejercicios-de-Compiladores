@@ -51,7 +51,7 @@ public class Parser {
 
     /**
      * Método que devuelve el siguiente token para su procesamiento.
-     * @throws java.io.IOException
+     * @throws IOException
      */
     void avanzar() throws IOException{
         tok = lex.yylex();
@@ -62,7 +62,7 @@ public class Parser {
     /**
      * Método que consume el léxema de un caracter
      * @param t lexema del token que estás consumiendo
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     boolean consumir(char t) throws IOException{
@@ -78,7 +78,7 @@ public class Parser {
     /**
      * La funcion parse inicia el analizador léxico, llama a la primera producción que es program y avanza
      * para obtener el primer token
-     * @throws java.io.IOException
+     * @throws IOException 
 
      */
     public void parse() throws IOException{
@@ -91,7 +91,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * program -> decl sent
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean program() throws IOException{
@@ -105,7 +105,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * decl -> tipo var; declp
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean decl() throws IOException{
@@ -121,7 +121,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * declp -> tipo var; declp | e
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean declp() throws IOException{
@@ -165,7 +165,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * var -> init varp
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean var() throws IOException{
@@ -180,7 +180,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * varp-> ,init varp | e
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean  varp() throws IOException{
@@ -198,7 +198,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * init-> id initp
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean init() throws IOException{
@@ -213,7 +213,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * initp -> := exp | e
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean initp() throws IOException{
@@ -230,7 +230,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * sent-> exp ; sentp
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean sent() throws IOException{
@@ -247,7 +247,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * sentp -> exp; sentp | e
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean sentp() throws IOException{
@@ -267,7 +267,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * exp -> term expp
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean  exp() throws IOException{
@@ -282,7 +282,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * expp -> + term expp | - term expp | e
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean expp() throws IOException{
@@ -305,7 +305,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * term -> factor termp
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean term() throws IOException{
@@ -320,7 +320,7 @@ public class Parser {
     /**
      * Describe este método la siguiente producción
      * termp -> * factor termp | / factor termp | e
-     * @throws java.io.IOException
+     * @throws IOException
      * @return error : true si la producción genera un error, false si no
      */
     public boolean termp() throws IOException{

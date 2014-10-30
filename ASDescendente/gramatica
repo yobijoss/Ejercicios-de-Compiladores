@@ -1,0 +1,21 @@
+program -> decl sent;
+decl -> tipo var; declp
+declp -> tipo var; declp | e
+tipo -> int|float|double|char
+var -> init varp
+varp-> ,init varp | e
+init-> id initp
+initp -> := exp | e
+sent-> exp ; sentp
+sentp -> exp; sentp | e
+exp -> term expp
+expp -> + term expp | - term expp | e
+term -> factor termp
+termp -> * factor termp | / factor termp | e
+factor-> id|(exp)|entero| flotante | caracter | doble
+
+
+float id := 34.3f;
+double sl := .45 , a:= 4.5;
+char sc := c;
+char xm;
